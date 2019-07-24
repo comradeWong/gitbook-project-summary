@@ -1,4 +1,4 @@
 # Table of contents
 
-* [Initial page](README.md)
+* [Nuxt.js项目搭建配置踩坑](README.md)
 
