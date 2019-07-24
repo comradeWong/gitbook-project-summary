@@ -6,7 +6,7 @@ description: 公司项目需要用到nuxt.js的服务端渲染，所以使用了
 
 * **IE9的适配问题**
 
-  IE9是一个老大难的问题，因为它不支持ES6的语法，而且ie9也不知路由中的history模式，所以我在这儿暂时的解决办法如下。[文档&gt;&gt;](https://zh.nuxtjs.org/api/configuration-router/)
+  IE9是一个老大难的问题，因为它不支持ES6的语法，而且ie9也不支持路由中的history模式，所以我在这儿暂时的解决办法如下。[文档&gt;&gt;](https://zh.nuxtjs.org/api/configuration-router/)
 
   ```javascript
   // nuxt.config.js 
