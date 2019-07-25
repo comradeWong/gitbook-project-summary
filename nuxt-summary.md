@@ -5,9 +5,15 @@ description: 公司项目需要用到nuxt.js的服务端渲染，所以使用了
 
 # Nuxt.js项目搭建配置踩坑
 
+
+
 [TOC]
 
-### **IE9的适配问题**
+------
+
+
+
+### IE9的适配问题
 
 IE9是一个老大难的问题，因为它不支持ES6的语法，而且ie9也不支持路由中的history模式，所以我在这儿暂时的解决办法如下。[文档&gt;&gt;](https://zh.nuxtjs.org/api/configuration-router/)
 
@@ -61,7 +67,7 @@ import 'babel-polyfill'
 
 
 
-### **全局样式变量的引入和全局样式的引入**
+### 全局样式变量的引入和全局样式的引入
 
 因为开发时项目使用的css预编译器是scss，所以注册全局的样式变量如下。
 
@@ -100,7 +106,7 @@ npm i node-sass sass-loader scss-loader --save-dev
 
 
 
-### **Vue 全局注入函数和属性值**
+### Vue 全局注入函数和属性值
 
 有时您希望在整个应用程序中使用某个函数或属性值，此时，你需要将它们注入到Vue实例（客户端），context（服务器端）甚至 store\(Vuex\)。按照惯例，新增的属性或方法名使用`$`作为前缀。
 
@@ -158,7 +164,7 @@ export default {
 
 
 
-### **Vue 全局注册组件**
+### Vue 全局注册组件
 
 ​ 首先，先创建一个\*.vue文件，我的文件名叫`MyViewer.vue`，然后在全局注册这个组件，代码如下。
 
