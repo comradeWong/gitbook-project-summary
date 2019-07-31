@@ -166,6 +166,97 @@ module.exports = {
 
 ```
 
+#### vue-router的配置
+
+在src目录下新建router文件夹，并在文件夹下新建index.js
+
+```javascript
+// @/src/router/index.js
+import Vue from 'vue'
+import Router from 'vue-router'
+import Routes from './routes'
+import before from './Interceptors/before'
+import after from './Interceptors/after'
+
+Vue.use(Router)
+
+const router = new Router({
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes: Routes
+})
+
+router.beforeEach(before)
+
+router.afterEach(after)
+
+export default router
+
+```
+
+新建router/routes 文件夹，并在文件夹下新建index.js
+
+```javascript
+/**
+ * @author: Wang.X.Y/comrade.wang.cn@gmail.com
+ * @Date: 2019/7/31
+ * @Time: 19:10
+ * @Description: 路由路径配置
+ */
+import Home from '../../views/Home.vue'
+const routes = [
+  {
+    path: '/',
+    name: 'home',
+    component: Home
+  },
+  {
+    path: '/about',
+    name: 'about',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../../views/About.vue')
+  }
+]
+
+export default routes
+```
+
+新建router/Interceptors文件夹，存放路由的守卫
+
+```javascript
+/**
+ * @author: Wang.X.Y/comrade.wang.cn@gmail.com
+ * @Date: 2019/7/31
+ * @Time: 19:30
+ * @Description: 路由后置守卫
+ */
+// @/src/router/Interceptors/after
+export default (to, from) => {}
+```
+
+```javascript
+/**
+ * @author: Wang.X.Y/comrade.wang.cn@gmail.com
+ * @Date: 2019/7/31
+ * @Time: 19:30
+ * @Description:  路由前置守卫
+ */
+// @/src/router/Interceptors/before
+export default (to, from, next) => {
+  next()
+}
+
+```
+
+最后的文件目录如下图
+
+![router&#x6A21;&#x5757;&#x6587;&#x4EF6;&#x76EE;&#x5F55;](.gitbook/assets/4-1.png)
+
+最后千万不要忘了在main.js引用router模块。
+
 ### 项目中问题总结
 
 * [Huksy、lint-staged commit时自动调用Prettier进行格式化](http://ju.outofmemory.cn/entry/335890)
