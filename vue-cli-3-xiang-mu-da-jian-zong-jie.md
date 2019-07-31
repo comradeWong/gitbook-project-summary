@@ -82,7 +82,7 @@ module.exports = {
 
 #### vue.config.js配置
 
-在项目的根目录下创建vue.config.js文件。（[官方文档戳我 &gt;&gt;](https://cli.vuejs.org/zh/config/#)）
+在项目的根目录下创建`vue.config.js`文件。（[官方文档戳我 &gt;&gt;](https://cli.vuejs.org/zh/config/#)）
 
 ```javascript
 /**
@@ -168,7 +168,7 @@ module.exports = {
 
 #### vue-router的配置
 
-在src目录下新建router文件夹，并在文件夹下新建index.js
+在src目录下新建`router`文件夹，并在文件夹下新建`index.js`
 
 ```javascript
 // @/src/router/index.js
@@ -224,7 +224,7 @@ const routes = [
 export default routes
 ```
 
-新建router/Interceptors文件夹，存放路由的守卫
+新建`router/Interceptors`文件夹，存放路由的守卫
 
 ```javascript
 /**
@@ -255,7 +255,98 @@ export default (to, from, next) => {
 
 ![router&#x6A21;&#x5757;&#x6587;&#x4EF6;&#x76EE;&#x5F55;](.gitbook/assets/4-1.png)
 
-最后千万不要忘了在main.js引用router模块。
+最后，不要忘记在`main.js`中引用router模块。
+
+#### vuex配置
+
+在src目录下，新建`store`文件夹，并在该文件夹下新建`index.js`根文件。
+
+```javascript
+/**
+ * @author: Wang.X.Y/comrade.wang.cn@gmail.com
+ * @Date: 2018/11/22
+ * @Time: 10:00
+ * @Description: store index 根文件
+ */
+import Vue from 'vue'
+import Vuex from 'vuex'
+import createLogger from 'vuex/dist/logger'
+import common from './modules/common'
+import page from './modules/page'
+Vue.use(Vuex)
+
+const debug = process.env.NODE_ENV !== 'production'
+export default new Vuex.Store({
+  modules: {
+    common,
+    page
+  },
+  strict: debug,
+  plugins: debug ? [createLogger()] : []
+})
+```
+
+在`src/store`项目目录下新建`modules`文件夹，用于存放vuex模块。
+
+```javascript
+/**
+ * @author: Wang.X.Y/comrade.wang.cn@gmail.com
+ * @Date: 2018/11/22
+ * @Time: 10:09
+ * @Description: 公共状态
+ */
+ // @/src/store/modules/common/index.js
+const state = {
+  show: false,
+  token: sessionStorage.getItem('token') || ''
+}
+const getters = {
+  not_show (state) {
+    return !state.show
+  },
+  get_token (state) {
+    return state.token
+  }
+}
+const mutations = {
+  switch_show (state) {
+    state.show = !state.show
+  },
+  set_token (state, token) {
+    sessionStorage.setItem('token', token)
+    state.token = token
+  },
+  del_token (state) {
+    sessionStorage.removeItem('token')
+    state.token = ''
+  }
+}
+const actions = {
+  switch_show (context) {
+    context.commit('switch_show')
+  },
+  set_token ({commit}, token) {
+    commit('set_token', token)
+  },
+  del_token ({commit}) {
+    commit('del_token')
+  }
+}
+
+export default {
+  namespaced: true,
+  state,
+  getters,
+  actions,
+  mutations
+}
+```
+
+最终，vuex项目目录如下图。
+
+![store&#x6587;&#x4EF6;&#x76EE;&#x5F55;](.gitbook/assets/5-1.png)
+
+最后，同样不要忘记在`main.js`中引用。
 
 ### 项目中问题总结
 
