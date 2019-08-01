@@ -24,11 +24,11 @@ vue create <项目名称>
 
 #### 3. 然后如下图所示
 
-![&#x9009;&#x62E9;&#x4EBA;&#x5DE5;&#x9009;&#x62E9;features](.gitbook/assets/1.png)
+![&#x9009;&#x62E9;&#x4EBA;&#x5DE5;&#x9009;&#x62E9;features](../.gitbook/assets/1.png)
 
-![&#x6839;&#x636E;&#x9879;&#x76EE;&#x5177;&#x4F53;&#x60C5;&#x51B5;&#xFF0C;&#x9009;&#x62E9;&#x4E00;&#x4E9B;&#x9884;&#x88C5;&#x9879;](.gitbook/assets/3-2.png)
+![&#x6839;&#x636E;&#x9879;&#x76EE;&#x5177;&#x4F53;&#x60C5;&#x51B5;&#xFF0C;&#x9009;&#x62E9;&#x4E00;&#x4E9B;&#x9884;&#x88C5;&#x9879;](../.gitbook/assets/3-2.png)
 
-![&#x6700;&#x7EC8;&#x7684;&#x914D;&#x7F6E;&#x5982;&#x4E0A;](.gitbook/assets/3-3.png)
+![&#x6700;&#x7EC8;&#x7684;&#x914D;&#x7F6E;&#x5982;&#x4E0A;](../.gitbook/assets/3-3.png)
 
 #### 4. 这时候项目就已经搭建成功了。
 
@@ -253,7 +253,7 @@ export default (to, from, next) => {
 
 最后的文件目录如下图
 
-![router&#x6A21;&#x5757;&#x6587;&#x4EF6;&#x76EE;&#x5F55;](.gitbook/assets/4-1.png)
+![router&#x6A21;&#x5757;&#x6587;&#x4EF6;&#x76EE;&#x5F55;](../.gitbook/assets/4-1.png)
 
 最后，不要忘记在`main.js`中引用router模块。
 
@@ -344,7 +344,7 @@ export default {
 
 最终，vuex项目目录如下图。
 
-![store&#x6587;&#x4EF6;&#x76EE;&#x5F55;](.gitbook/assets/5-1.png)
+![store&#x6587;&#x4EF6;&#x76EE;&#x5F55;](../.gitbook/assets/5-1.png)
 
 最后，同样不要忘记在`main.js`中引用。
 
