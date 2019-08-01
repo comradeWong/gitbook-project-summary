@@ -5,7 +5,7 @@
 ## Vue
 
 * [Nuxt.js项目搭建配置踩坑](vue/nuxt-summary.md)
-* [Vue Cli 3 项目搭建总结](vue/vue-cli-3-xiang-mu-da-jian-zong-jie.md)
+* [Vue Cli 3 项目搭建总结](vue/vue-cli-3.md)
 
 ## 陶冶情操
 
