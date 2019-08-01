@@ -1,10 +1,10 @@
 ---
-description: 屋漏偏逢连夜雨，之前项目搭建写的文档丢了，这次我还是在本地写吧。雄关漫道真如铁，如今迈步从头越。
+description: 雄关漫道真如铁，如今迈步从头越。
 ---
 
 # Vue Cli 3 项目搭建总结
 
-### 搭建步骤
+## 搭建步骤
 
 > 得益于Vue Cli 3 ，Vue 有了自己的图形管理界面，使用vue ui即可进入，在这儿不做介绍，只介绍一下控制台新建项目的步骤。
 
@@ -32,7 +32,7 @@ vue create <项目名称>
 
 #### 4. 这时候项目就已经搭建成功了。
 
-### 项目配置
+## 项目配置
 
 > 在项目搭建完成之后，就要进入项目对一些选项进行配置，例如vue-router、vuex、prettier、vue.config.js配置等等。
 
@@ -348,7 +348,7 @@ export default {
 
 最后，同样不要忘记在`main.js`中引用。
 
-### 项目中问题总结
+## 项目中问题总结
 
 * [Huksy、lint-staged commit时自动调用Prettier进行格式化](http://ju.outofmemory.cn/entry/335890)
 * [axios把接口提取到api中分模块的js文件中](https://www.jianshu.com/p/c639ebd50c07)
