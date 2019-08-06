@@ -12,7 +12,19 @@ description: 列举一些开发项目时常用的技术问题
 
 beforeCreate、created、beforeMounted、mounted、beforeUpdated、updated、beforeDestroy、destroyed. 
 
+### MVVM框架是什么？它和其它框架（Jquery）的区别是什么？哪些场景适合？
 
+MVVM分为Model、View、ViewModel三者
+
+* **Model** 代表数据模型，数据和业务逻辑都在Model层中定义
+* **View** 代表UI视图，负责数据展示
+* **ViewModel** 负责监听 **Model** 中数据的改变并且控制视图更新，处理用户交互操作：
+
+**Model** 和 **View** 并无直接关联，而是通过 **ViewModel** 来进行联系的， **Model** 和 **ViewModel** 之间有着双向数据绑定的联系。因此当 **Model** 中的数据改变时会触发 **View** 层的刷新，**View** 中由于用户交互操作而改变的数据也会在 **Model** 中同步。
+
+区别：这种模式实现了 Model 和 View的数据自动同步，因此开发时这需要要专注对数据的维护操作即可，而不需要自己操作dom 场景。
+
+数据操作比较多的场景，更加便捷。
 
 ### **是否了解过虚拟DOM，其有什么优势？v-for 中的 key 属性的作用？**
 
@@ -266,4 +278,47 @@ export default {
   mutations
 }
 ```
+
+## JavaScript
+
+### 谈谈你对ECMAScript6的理解
+
+ECMAScript6是ES2015标准；
+
+* 新增了块级作用域\(let,const\)
+* 提供了定义类的语法糖\(class\)
+* 新增了一种基本数据类型\(Symbol\)
+* 新增了变量的解构赋值
+* 函数参数允许设置默认值，引入了rest参数，新增了箭头函数
+* 数组新增了一些API，如 isArray / from / of 方法;数组实例新增了 entries\(\)，keys\(\) 和 values\(\) 等方法
+* 对象和数组新增了扩展运算符
+* ES6 新增了模块化\(import/export\)
+* ES6 新增了 Set 和 Map 数据结构
+* ES6 原生提供 Proxy 构造函数，用来生成 Proxy 实例
+* ES6 新增了生成器\(Generator\)和遍历器\(Iterator\)
+
+### 什么是深拷贝，什么是浅拷贝？怎么实现深拷贝？
+
+变量存储类型分两类
+
+①基本类型：直接存储在栈中的数据。（字符串、布尔值、未定义、数字、null）
+
+②引用类型：将该对象引用地址存储在**栈**中，然后对象里面的数据存放在**堆**中。（数组、对象、函数）
+
+这里解释一下为什么null是基本类型：有人说他用type of打印出来不是oject吗？
+
+null只是一个空指针对象，没有数据。根据引用类型特点可以看一下是否符合。  
+常用：使用JSON.parse\(JSON.stringify\(obj\)\)
+
+浅拷贝：也就是拷贝A对象里面的数据，但是不拷贝A对象里面的子对象
+
+深拷贝：会克隆出一个对象，数据相同，但是引用地址不同（就是拷贝A对象里面的数据，而且拷贝它里面的子对象）
+
+赋值：获得该对象的引用地址
+
+原理是把一个对象序列化成为一个JSON字符串，将对象的内容转换成字符串的形式再保存在磁盘上，再用JSON.parse\(\)反序列化将JSON字符串变成一个新的对象
+
+缺点是: 会忽略undefined、symbol、funciton
+
+实现思想：如果是一个数组，就声明一个数据组，然后循环遍历，递归赋值。 如果是一个对象，就声明一个对象，然后判断是否子元素,递归赋值
 
