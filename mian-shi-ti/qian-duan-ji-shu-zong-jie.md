@@ -152,6 +152,8 @@ import globalCom from './commonCom' // 引入全局组件
 Vue.use(globalCom)
 ```
 
+### Vue项目中怎么注册一个组件并引用？
+
 ### **Vue项目中如何注册全局方法？**
 
 ```javascript
@@ -225,6 +227,18 @@ Vue.use(utils)
    }
    ```
 
+### Vue Router 传参 params和query有什么区别？
+
+1.params只能用name来引入路由，query用path来引入 
+
+2.params类似于post，query更加类似于我们ajax中get传参，说的再简单一点，前者在浏览器地址栏中不显示参数，后者显示，所以params传值相对安全一些。
+
+ 3.取值用法类似分别是this.$route.params.name和this.$route.query.name。
+
+ 4.params传值一刷新就没了，query传值刷新还存在。  
+
+如果想让params 不要一刷新就没了怎么办？路由path后加 /:id/:name
+
 ### **是否在项目中使用过Vuex?使用过，是否使用将store模块化过？**
 
 ```javascript
@@ -279,6 +293,34 @@ export default {
 }
 ```
 
+### vuex是什么？怎么使用？哪种功能场景使用它？ <a id="articleHeader7"></a>
+
+只用来读取的状态集中放在store中； 改变状态的方式是提交mutations，这是个同步的事物； 异步逻辑应该封装在action中。  
+在main.js引入store，注入。新建了一个目录store，….. export 。  
+场景有：单页应用中，组件之间的状态、音乐播放、登录状态、加入购物车
+
+**state**  
+Vuex 使用单一状态树,即每个应用将仅仅包含一个store 实例，但单一状态树和模块化并不冲突。存放的数据状态，不可以直接修改里面的数据。  
+**mutations**  
+mutations定义的方法动态修改Vuex 的 store 中的状态或数据。  
+**getters**  
+类似vue的计算属性，主要用来过滤一些数据。  
+**action**   
+actions可以理解为通过将mutations里面处里数据的方法变成可异步的处理数据的方法，简单的说就是异步操作数据。view 层通过 store.dispath 来分发 action。
+
+### Vue是一个SPA单页面应用，极其不利于SEO\(搜索引擎优化\)，请问怎么优化SEO?
+
+* **SSR**\(Server Side Rendering\)**服务端渲染**
+* 利用插件进行预渲染 （prerender-spa-plugin + vue-meta-info）
+
+### Vue组件间的参数传递 <a id="articleHeader3"></a>
+
+ **1.父组件与子组件传值**  
+父组件传给子组件：子组件通过props方法接受数据;  
+子组件传给父组件：$emit方法传递参数  
+**2.非父子组件间的数据传递，兄弟组件传值**  
+eventBus，就是创建一个事件中心，相当于中转站，可以用它来传递事件和接收事件。项目比较小时，用这个比较合适。（虽然也有不少人推荐直接用VUEX，具体来说看需求咯。技术只是手段，目的达到才是王道。）
+
 ## JavaScript
 
 ### 谈谈你对ECMAScript6的理解
@@ -320,5 +362,48 @@ null只是一个空指针对象，没有数据。根据引用类型特点可以�
 
 缺点是: 会忽略undefined、symbol、funciton
 
-实现思想：如果是一个数组，就声明一个数据组，然后循环遍历，递归赋值。 如果是一个对象，就声明一个对象，然后判断是否子元素,递归赋值
+实现思想：如果是一个数组，就声明一个数据组，然后循环遍历，递归赋值。 如果是一个对象，就声明一个对象，然后判断是否子元素,递归赋值。
+
+### 请一句话概括一下什么是闭包。
+
+一句话可以概括：闭包就是能够读取其他函数内部变量的函数，或者子函数在外调用，子函数所在的父函数的作用域不会被释放。
+
+### Promise函数中的代码是立即执行的吗？Promise有哪三种状态？Promise的状态是否可逆？
+
+是。
+
+Promise的内部实现是一个状态机。Promise有三种状态：pending，resolved，rejected。当Promise刚创建完成时，处于pending状态；当Promise中的函数参数执行了resolve后，Promise由pending状态变成resolved状态；如果在Promise的函数参数中执行的不是resolve方法，而是reject方法，那么Promise会由pending状态变成rejected状态。
+
+不可逆。Promise状态的一旦变成resolved或rejected时，Promise的状态和值就固定下来了，不论你后续再怎么调用resolve或reject方法，都不能改变它的状态和值。
+
+### 是否了解async / await 函数？其是怎么实现异步回调的？
+
+* async/await是写异步代码的新方式，以前的方法有**回调函数**和**Promise**。
+* async/await是基于Promise实现的，它不能用于普通的回调函数。
+* async/await与Promise一样，是非阻塞的。
+* async/await使得异步代码看起来像同步代码，这正是它的魔力所在。
+
+async 函数返回一个 Promise 对象，当函数执行的时候，一旦遇到 await 就会先返回，等到触发的异步操作完成，再接着执行函数体内后面的语句。
+
+## HTML
+
+### **请描述一下 cookies，sessionStorage 和 localStorage 的区别？**
+
+cookie是网站为了标示用户身份而储存在用户本地终端（Client Side）上的数据（通常经过加密）。
+
+* cookie数据始终在同源的http请求中携带（即使不需要），记会在浏览器和服务器间来回传递。
+* sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。
+
+存储大小：
+
+* cookie数据大小不能超过4k。
+* sessionStorage和localStorage 虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大。
+
+有期时间：
+
+* localStorage 存储持久数据，浏览器关闭后数据不丢失除非主动删除数据；
+* sessionStorage 数据在当前浏览器窗口关闭后自动删除。
+* cookie 设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭。
+
+## CSS
 
