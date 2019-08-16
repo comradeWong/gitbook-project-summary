@@ -187,9 +187,9 @@ Vue.use(globalCom)
   ],
 ```
 
-先写这么多，以后随着项目进度继续更新。
-
 ## 使用vue-router的导航守卫，判断权限
 
-因为nuxt.js是在服务端渲染的，所以无法获取到window对象，所以无法使用sessionStorage等浏览器属性，然后我就将token存放在了cookies里面，但是我需要在导航守卫中去对token进行写入或者删除操作，我虽然在项目中引入了`vue-cookies`这种插件，但是在导航守卫中是获取不到的，所以，我引入了另外一个插件`cookie-universal-nuxt`，然后我就可以在导航守卫中获取和操作cookie了。具体引入方法和api详见[文档](https://www.npmjs.com/package/cookie-universal-nuxt)
+因为nuxt.js是在服务端渲染的，所以无法获取到window对象，所以无法使用sessionStorage等浏览器属性，然后我就将token存放在了cookies里面，但是我需要在导航守卫中去对token进行写入或者删除操作，我虽然在项目中引入了`vue-cookies`这种插件，但是在导航守卫中是获取不到的，所以，我引入了另外一个插件`cookie-universal-nuxt`，然后我就可以在导航守卫中获取和操作cookie了。具体引入方法和api详见[文档](https://www.npmjs.com/package/cookie-universal-nuxt)。
+
+先写这么多，以后随着项目进度继续更新。
 
